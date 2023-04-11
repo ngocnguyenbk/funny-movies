@@ -66,3 +66,7 @@ Style/AsciiComments:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/services/**/*'

@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   }
 
   root "home#index"
+  resources :movies, only: [:index]
+  get "/share", to: "movies#share"
+  post "/share", to: "movies#create"
 end

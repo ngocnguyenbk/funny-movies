@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true, length: { minimum: 6, maximum: 25 }, uniqueness: { case_sensitive: true }
+
+  has_many :movies, dependent: :destroy
 end
