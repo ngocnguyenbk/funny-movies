@@ -1,0 +1,9 @@
+nav.navbar.navbar-light.bg-light
+  .container-fluid.d-flex.justify-content-between
+    = link_to root_path, class: "navbar-brand d-flex" do
+      i.bi.bi-house-door-fill
+      .ms-2 Funny Movies
+    - if user_signed_in?
+      = render "shared/info"
+    - else
+      = render "shared/login"
