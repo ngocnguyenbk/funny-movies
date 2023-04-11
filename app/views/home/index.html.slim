@@ -1,1 +1,3 @@
-p.h2 Home page
+.container.mt-3 data-controller="home"
+  - @movies.each do |movie|
+    = render 'movie', movie: movie
