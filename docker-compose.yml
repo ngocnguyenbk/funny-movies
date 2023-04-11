@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  funny-movies:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    container_name: funny-movies-web
+    depends_on:
+      - db
+    ports:
+      - '3002:3000'
+    volumes:
+      - .:/funny-movies
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/funny-movies/node_modules
+    environment:
+      RAILS_ENV: development
+      BUNDLE_PATH: /usr/local/bundle/gems
+    command: bundle exec rails s -b 0.0.0.0
+  db:
+    image: postgres:14.1
+    ports:
+      - '5435:5432'
+    container_name: funny-movies-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres:/data/postgres
+volumes:
+  gem_cache:
+    driver: local
+  postgres:
+    driver: local
+  node_modules:
+    driver: local
