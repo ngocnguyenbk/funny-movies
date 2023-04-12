@@ -4,7 +4,7 @@ class CreateMovieService < ApplicationService
   def initialize(url, user)
     @url = url
     @user = user
-    VideoInfo.provider_api_keys = { youtube: "AIzaSyD3MSPXFZJdc94uDhWIt4oS8tTYl4PH_8E" }
+    VideoInfo.provider_api_keys = { youtube: Rails.application.credentials.google_api_key }
   end
 
   def call

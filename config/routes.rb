@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   }
 
   root "home#index"
-  resources :movies, only: [:index]
   get "/share", to: "movies#share"
   post "/share", to: "movies#create"
+
+  namespace :api, defaults: { format: :json } do
+    resources :movies, only: [] do
+      member do
+        post :like
+        post :dislike
+      end
+    end
+  end
 end

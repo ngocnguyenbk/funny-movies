@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @movies = Movie.all.preload(:user).order(created_at: :desc)
+  end
 end
