@@ -19,8 +19,8 @@ module ApplicationHelper
     end
   end
 
-  def truncate_words(text, length = 30, end_string = '...')
+  def truncate_words(text, length = 30, end_string = "...")
     words = text.split
-    words[0...length].join(' ') + (words.length > length ? end_string : '')
+    words[0...length].join(" ") + (words.length > length ? end_string : "")
   end
 end

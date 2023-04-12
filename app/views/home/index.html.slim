@@ -1,3 +1,4 @@
-session data-controller="home"
+section data-controller="home"
   - @movies.each do |movie|
-    = render "movies/movie", movie: movie
+    - vote = @votes.find { |v| v.movie_id == movie.id }
+    = render "movies/movie", movie: movie, vote: vote

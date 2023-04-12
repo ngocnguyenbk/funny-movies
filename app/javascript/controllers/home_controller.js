@@ -17,8 +17,10 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        const { likes, dislikes } = data
-        this._calculateLikesCount(id, likes, dislikes)
+        location.reload()
+      })
+      .catch((error) => {
+        console.log(error)
       })
   }
 
@@ -38,15 +40,10 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        const { likes, dislikes } = data
-        this._calculateLikesCount(id, likes, dislikes)
+        location.reload()
       })
-  }
-
-  _calculateLikesCount(id, likes, dislikes) {
-    const likesCount = document.getElementById(`like-movie-${id}`)
-    const dislikesCount = document.getElementById(`dislike-movie-${id}`)
-    likesCount.innerText = likes
-    dislikesCount.innerText = dislikes
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }

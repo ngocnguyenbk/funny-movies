@@ -4,21 +4,30 @@
   .col-9
     .row
       p.h4.text-danger = movie.title
-      p.h5 = "Share by: #{movie.user.email}"
-      ul.list-inline
+      ul.list-inline.mb-0
+        li.list-inline-item
+          p.h5 = "Share by: #{movie.user.email}"
         - if user_signed_in?
-          li.d-inline-flex.me-3 role="button" data-action="click->home#like" data-target="home.like" data-id="#{movie.id}"
-            div id="like-movie-#{movie.id}" = movie.likes_count
-            i.bi.bi-hand-thumbs-up
-          li.d-inline-flex role="button" data-action="click->home#dislike" data-target="home.dislike" data-id="#{movie.id}"
-            div id="dislike-movie-#{movie.id}" = movie.dislikes_count
-            i.bi.bi-hand-thumbs-down
-        - else
-          li.d-inline-flex.me-3
-            = movie.likes_count
-            i.bi.bi-hand-thumbs-up
-          li.d-inline-flex
-            = movie.dislikes_count
-            i.bi.bi-hand-thumbs-down
+          - if vote.present?
+            - if vote.downvote?
+              li.list-inline-item role="button" data-action="click->home#dislike" data-id="#{movie.id}"
+                i.bi.bi-hand-thumbs-down-fill.display-6
+            - else
+              li.list-inline-item role="button" data-action="click->home#like" data-id="#{movie.id}"
+                i.bi.bi-hand-thumbs-up-fill.display-6
+          - else
+            li.list-inline-item role="button" data-action="click->home#like" data-id="#{movie.id}"
+              i.bi.bi-hand-thumbs-up.display-6
+            li.list-inline-item role="button" data-action="click->home#dislike" data-id="#{movie.id}"
+              i.bi.bi-hand-thumbs-down.display-6
+          li.list-inline-item
+            = vote.present? ? "(voted #{vote.upvote? ? 'up' : 'down'})" : "(un-voted)"
+      ul.list-inline
+        li.d-inline-flex.me-3
+          = movie.likes_count
+          i.bi.bi-hand-thumbs-up
+        li.d-inline-flex
+          = movie.dislikes_count
+          i.bi.bi-hand-thumbs-down
       p.h5 = "Discription:"
-      p = truncate_words(movie.description, 100)
+      article = truncate_words(movie.description, 100)
