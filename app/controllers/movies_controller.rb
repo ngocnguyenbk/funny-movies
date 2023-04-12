@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
+
   def share
     @movie = current_user.movies.new
   end

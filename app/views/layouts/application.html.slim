@@ -10,5 +10,6 @@ html
     = javascript_importmap_tags
   body
     = render "shared/navbar"
-    = render "shared/flash"
-    = yield
+    .container.mt-5.pt-5
+      = render "shared/flash"
+      = yield

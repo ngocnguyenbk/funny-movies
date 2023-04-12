@@ -18,4 +18,9 @@ module ApplicationHelper
     else "alert alert-dismissible alert-#{level}"
     end
   end
+
+  def truncate_words(text, length = 30, end_string = '...')
+    words = text.split
+    words[0...length].join(' ') + (words.length > length ? end_string : '')
+  end
 end

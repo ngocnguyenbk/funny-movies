@@ -1,16 +1,15 @@
 class CreateMovieService < ApplicationService
-  attr_reader :url, :user
+  attr_reader :url, :user, :movie
 
   def initialize(url, user)
     @url = url
     @user = user
-    VideoInfo.provider_api_keys = { youtube: Rails.application.credentials.google_api_key }
+    @movie = user.movies.new
   end
 
   def call
     ActiveRecord::Base.transaction do
-      movie = user.movies.new(movie_params)
-      movie.save!
+      movie.update!(movie_params)
       true
     end
   rescue ActiveRecord::RecordInvalid

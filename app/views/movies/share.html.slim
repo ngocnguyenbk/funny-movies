@@ -1,4 +1,4 @@
-.container.d-flex.justify-content-center.align-items-center style="height: 80vh"
+.d-flex.justify-content-center.align-items-center style="height: 80vh"
   fieldset.border.p-2.w-50
     legend.w-auto.float-none = "Share a Youtube movie"
     = simple_form_for @movie, url: share_path, data: { turbo: false } do |f|
