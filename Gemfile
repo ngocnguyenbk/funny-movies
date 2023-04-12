@@ -37,9 +37,12 @@ end
 
 group :test do
   gem "capybara"
+  gem "factory_bot_rails"
+  gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
   gem "webdrivers"
 end
