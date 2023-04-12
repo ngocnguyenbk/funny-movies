@@ -25,6 +25,13 @@ group :development, :test do
 end
 
 group :development do
+  gem "bcrypt_pbkdf"
+  gem "capistrano", "~> 3.17", require: false
+  gem "capistrano3-puma"
+  gem "capistrano-bundler", require: false
+  gem "capistrano-rails", require: false
+  gem "capistrano-rbenv", "~> 2.2", require: false
+  gem "ed25519"
   gem "web-console"
 end
 
