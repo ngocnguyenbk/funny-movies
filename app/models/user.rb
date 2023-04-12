@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { minimum: 6, maximum: 25 }, uniqueness: { case_sensitive: true }
 
   has_many :movies, dependent: :destroy
+  has_many :votes, dependent: :destroy
 end

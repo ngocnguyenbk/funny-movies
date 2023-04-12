@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @movies = Movie.all.preload(:user).order(created_at: :desc)
+    @movies = Movie.preload(:user).order(created_at: :desc)
+    @votes = Vote.where(user: current_user)
   end
 end

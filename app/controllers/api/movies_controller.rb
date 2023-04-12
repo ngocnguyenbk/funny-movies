@@ -3,13 +3,21 @@ module Api
     before_action :authenticate_user!
 
     def like
-      movie.like!
-      render json: { likes: movie.likes_count, dislikes: movie.dislikes_count }
+      result, message = VoteMovieService.call(current_user, movie, :upvote)
+      if result
+        render json: { message: message }, status: :ok
+      else
+        render json: { message: message }, status: :unprocessable_entity
+      end
     end
 
     def dislike
-      movie.dislike!
-      render json: { likes: movie.likes_count, dislikes: movie.dislikes_count }
+      result, message = VoteMovieService.call(current_user, movie, :downvote)
+      if result
+        render json: { message: message }, status: :ok
+      else
+        render json: { message: message }, status: :unprocessable_entity
+      end
     end
 
     private
