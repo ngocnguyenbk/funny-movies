@@ -1,6 +1,9 @@
 class Movie < ApplicationRecord
   belongs_to :user
 
+  validates :title, presence: true
+  validates :url, presence: true, uniqueness: true
+
   def like!
     update!(likes_count: likes_count + 1)
   end

@@ -1,5 +1,7 @@
 module Api
   class MoviesController < ApplicationController
+    before_action :authenticate_user!
+
     def like
       movie.like!
       render json: { likes: movie.likes_count, dislikes: movie.dislikes_count }

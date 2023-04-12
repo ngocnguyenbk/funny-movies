@@ -1,4 +1,7 @@
 en:
+  unauthenticated: &unauthenticated "You need to sign in or sign up before continuing."
   movies:
     create:
       success: 'Movie shared successfully!'
+    share:
+      unauthenticated: *unauthenticated

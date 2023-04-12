@@ -1,12 +1,8 @@
-window.onload = function () {
-  const btnRegister = document.getElementById('btn-register')
+import { Controller } from '@hotwired/stimulus'
 
-  if (!btnRegister) {
-    return
-  }
-
-  btnRegister.addEventListener('click', function (e) {
-    e.preventDefault()
+export default class extends Controller {
+  register(event) {
+    event.preventDefault()
     const username = document.getElementById('user_username').value
     const password = document.getElementById('user_password').value
     const password_confirmation = password
@@ -40,5 +36,5 @@ window.onload = function () {
       .finally(() => {
         location.reload()
       })
-  })
+  }
 }
