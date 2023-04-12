@@ -19,7 +19,7 @@ services:
     environment:
       RAILS_ENV: development
       BUNDLE_PATH: /usr/local/bundle/gems
-    # command: bundle exec rails s -b 0.0.0.0
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
   db:
     image: postgres:14.1
     ports:
@@ -30,6 +30,10 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - postgres:/data/postgres
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
 volumes:
   gem_cache:
     driver: local

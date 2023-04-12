@@ -1,4 +1,8 @@
 section data-controller="home"
-  - @movies.each do |movie|
-    - vote = @votes.find { |v| v.movie_id == movie.id }
-    = render "movies/movie", movie: movie, vote: vote
+  - if @movies.empty?
+    .alert.alert-info
+      = "No movies found. Please add some movies."
+  - else
+    - @movies.each do |movie|
+      - vote = @votes.find { |v| v.movie_id == movie.id }
+      = render "movies/movie", movie: movie, vote: vote

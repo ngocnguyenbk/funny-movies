@@ -17,7 +17,7 @@ export default class extends Controller {
     const method = 'POST'
     const headers = {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content,
     }
     const body = JSON.stringify(data)
     const config = {
