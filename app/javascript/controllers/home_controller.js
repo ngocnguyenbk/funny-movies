@@ -4,7 +4,7 @@ export default class extends Controller {
   like(event) {
     event.preventDefault()
     const id = event.currentTarget.dataset.id
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
     fetch(`/api/movies/${id}/like`, {
       method: 'POST',
       headers: {
@@ -27,7 +27,7 @@ export default class extends Controller {
   dislike(event) {
     event.preventDefault()
     const id = event.currentTarget.dataset.id
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
     fetch(`/api/movies/${id}/dislike`, {
       method: 'POST',
       headers: {

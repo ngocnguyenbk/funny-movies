@@ -21,12 +21,15 @@ RSpec.describe "Movies", type: :request do
   describe "upvote a movie when already upvoted" do
     let(:vote) { create(:vote, user: user, movie: movie, vote_type: :upvote) }
 
-    before { vote }
+    before do
+      vote
+      movie.update(likes_count: 1)
+    end
 
     it "does not increase the movie's upvotes" do
       expect do
         post "/api/movies/#{movie.id}/like"
-      end.to change { movie.reload.likes_count }.by(0)
+      end.to change { movie.reload.likes_count }.from(1).to(0)
     end
   end
 
@@ -41,12 +44,15 @@ RSpec.describe "Movies", type: :request do
   describe "downvote a movie when already downvoted" do
     let(:vote) { create(:vote, user: user, movie: movie, vote_type: :downvote) }
 
-    before { vote }
+    before do
+      vote
+      movie.update(dislikes_count: 1)
+    end
 
     it "does not increase the movie's downvotes" do
       expect do
         post "/api/movies/#{movie.id}/dislike"
-      end.to change { movie.reload.dislikes_count }.by(0)
+      end.to change { movie.reload.dislikes_count }.from(1).to(0)
     end
   end
 end
