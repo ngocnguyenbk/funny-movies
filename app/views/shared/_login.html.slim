@@ -3,5 +3,5 @@ session data-controller="navbar"
     = f.input :username, label: false, placeholder: "Username"
     = f.input :password, label: false, placeholder: "Password"
     .col-auto
-      = f.button :submit, "Log in", class: "btn btn-primary me-2", name: "commit", value: "Log in"
+      = f.button :submit, "Log in", class: "btn btn-primary me-2", name: "commit", value: "Log in", id: "btn-login"
       = link_to "Register", "#", class: "btn btn-primary", id: "btn-register", data: { action: "click->navbar#register" }

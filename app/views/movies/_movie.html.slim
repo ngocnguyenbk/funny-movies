@@ -1,4 +1,4 @@
-.row.mb-3
+.row.mb-3 id="movie-#{movie.id}"
   .col-3
     = image_tag movie.thumbnail_url, class: 'img-fluid'
   .col-9
@@ -10,15 +10,15 @@
         - if user_signed_in?
           - if vote.present?
             - if vote.downvote?
-              li.list-inline-item role="button" data-action="click->home#dislike" data-id="#{movie.id}"
+              li.list-inline-item.downvote role="button" data-action="click->home#dislike" data-id="#{movie.id}"
                 i.bi.bi-hand-thumbs-down-fill.display-6
             - else
-              li.list-inline-item role="button" data-action="click->home#like" data-id="#{movie.id}"
+              li.list-inline-item.upvote role="button" data-action="click->home#like" data-id="#{movie.id}"
                 i.bi.bi-hand-thumbs-up-fill.display-6
           - else
-            li.list-inline-item role="button" data-action="click->home#like" data-id="#{movie.id}"
+            li.list-inline-item.upvote role="button" data-action="click->home#like" data-id="#{movie.id}"
               i.bi.bi-hand-thumbs-up.display-6
-            li.list-inline-item role="button" data-action="click->home#dislike" data-id="#{movie.id}"
+            li.list-inline-item.downvote role="button" data-action="click->home#dislike" data-id="#{movie.id}"
               i.bi.bi-hand-thumbs-down.display-6
           li.list-inline-item
             = vote.present? ? "(voted #{vote.upvote? ? 'up' : 'down'})" : "(un-voted)"

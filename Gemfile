@@ -22,6 +22,7 @@ gem "video_info"
 
 group :development, :test do
   gem "pry"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -37,9 +38,10 @@ end
 
 group :test do
   gem "capybara"
+  gem "factory_bot_rails"
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "shoulda-matchers"
 end
