@@ -1,0 +1,7 @@
+session data-controller="navbar"
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "row" }, defaults: { wrapper_html: { class: "col-auto" } } do |f|
+    = f.input :username, label: false, placeholder: "Username"
+    = f.input :password, label: false, placeholder: "Password"
+    .col-auto
+      = f.button :submit, "Log in", class: "btn btn-primary me-2", name: "commit", value: "Log in", id: "btn-login"
+      = link_to "Register", "#", class: "btn btn-primary", id: "btn-register", data: { action: "click->navbar#register" }

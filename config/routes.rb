@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    registrations: :registrations,
+    sessions: :sessions
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "home#index"
+  get "/share", to: "movies#share"
+  post "/share", to: "movies#create"
+
+  namespace :api, defaults: { format: :json } do
+    resources :movies, only: [] do
+      member do
+        post :like
+        post :dislike
+      end
+    end
+  end
 end
